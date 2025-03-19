@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pranav Phani Lingamguntla | Design Engineer Portfolio</title>
+  <style>
+    /* Reset & Base Styles */
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      color: #333;
+      background: #fff; /* Plain white background for light mode */
+    }
+    a {
+      text-decoration: none;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      padding: 15px 0;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      margin: 0 10px;
+    }
+    nav ul li a {
+      color: #333;
+      padding: 15px;
+      display: block;
+    }
+    nav ul li a:hover {
+      color: #007BFF;
+    }
+    .menu-toggle {
+      cursor: pointer;
+      font-size: 1.5em;
+      display: none;
+    }
+
+    /* Hero Section with Mechanical Background */
+    header.hero {
+      position: relative;
+      height: 100vh;
+      color: #fff;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      /* Mechanical background applied only here for light mode */
+      background: 
+        /* Subtle noise texture for metallic feel */
+        linear-gradient(45deg, rgba(0,0,0,0.03) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.03) 75%, rgba(0,0,0,0.03)),
+        linear-gradient(-45deg, rgba(0,0,0,0.03) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.03) 75%, rgba(0,0,0,0.03)),
+        /* Pinions (small gears) */
+        conic-gradient(#555 0deg 15deg, transparent 15deg 30deg, #555 30deg 45deg, transparent 45deg 60deg, #555 60deg 75deg, transparent 75deg 90deg, #555 90deg 105deg, transparent 105deg 120deg, #555 120deg 135deg, transparent 135deg 150deg, #555 150deg 165deg, transparent 165deg 180deg, #555 180deg 195deg, transparent 195deg 360deg),
+        /* Crown gears (radial teeth pattern) */
+        radial-gradient(circle, #666 0% 10%, transparent 10% 20%, #666 20% 30%, transparent 30% 40%, #666 40% 50%, transparent 50% 60%, #666 60% 70%, transparent 70%),
+        /* Gears (larger with more teeth) */
+        conic-gradient(#777 0deg 20deg, transparent 20deg 40deg, #777 40deg 60deg, transparent 60deg 80deg, #777 80deg 100deg, transparent 100deg 120deg, #777 120deg 140deg, transparent 140deg 160deg, #777 160deg 180deg, transparent 180deg 200deg, #777 200deg 220deg, transparent 220deg 240deg, #777 240deg 260deg, transparent 260deg 280deg, #777 280deg 300deg, transparent 300deg 320deg, #777 320deg 340deg, transparent 340deg 360deg),
+        /* Base metallic gradient */
+        linear-gradient(135deg, #d5d5d5, #a5a5a5);
+      background-size: 2px 2px, 2px 2px, 40px 40px, 60px 60px, 100px 100px, auto;
+      background-position: 0 0, 1px 1px, 20px 20px, 30px 30px, 0 0, 0 0;
+      background-repeat: repeat, repeat, repeat, repeat, repeat, no-repeat;
+    }
+    header.hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Overlay for contrast */
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+    .hero p {
+      font-size: 1.2em;
+      margin: 20px 0;
+    }
+    .hero a {
+      background: #007BFF;
+      padding: 10px 20px;
+      color: #fff;
+      border-radius: 5px;
+    }
+
+    /* Section Titles */
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.5em;
+      position: relative;
+    }
+    .section-title::after {
+      content: "";
+      width: 80px;
+      height: 3px;
+      background: #007BFF;
+      margin: 10px auto;
+      display: block;
+    }
+
+    /* About Section */
+    #about .content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+    #about .content > div {
+      flex: 1;
+      min-width: 300px;
+      margin: 20px;
+      background: rgba(255, 255, 255, 0.9); /* Semi-transparent for readability */
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+    /* Timeline for Experience */
+    .timeline {
+      position: relative;
+      margin: 50px 0;
+      padding: 0;
+      list-style: none;
+    }
+    .timeline:before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #007BFF;
+      transform: translateX(-50%);
+    }
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 20px 40px;
+      box-sizing: border-box;
+      background: rgba(255, 255, 255, 0.9); /* Semi-transparent for readability */
+      border-radius: 5px;
+    }
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      text-align: right;
+    }
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      text-align: left;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff;
+      border: 4px solid #007BFF;
+    }
+    .timeline-item:nth-child(odd)::before {
+      right: -10px;
+    }
+    .timeline-item:nth-child(even)::before {
+      left: -10px;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-gap: 20px;
+    }
+    .project-card {
+      background: rgba(255, 255, 255, 0.9); /* Semi-transparent for readability */
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding: 20px;
+    }
+    .project-card:hover {
+      transform: translateY(-10px);
+    }
+    .project-info {
+      text-align: left;
+      width: 100%;
+    }
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      width: 100%;
+    }
+    .image-gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease-in-out;
+    }
+    .image-gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Contact Section */
+    #contact p {
+      background: rgba(255, 255, 255, 0.9); /* Semi-transparent for readability */
+      padding: 20px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(51, 51, 51, 0.9);
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    /* Responsive Styles */
+    @media(max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        display: none;
+      }
+      nav.active ul {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .timeline:before {
+        left: 20px;
+      }
+      .timeline-item {
+        width: 100%;
+        text-align: left !important;
+        padding-left: 40px;
+      }
+      .timeline-item::before {
+        left: 0;
+      }
+    }
+
+    /* Animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Dark Mode */
+    .dark-mode {
+      color: #e0e0e0;
+      background: #222; /* Plain dark background for dark mode */
+    }
+    .dark-mode nav {
+      background: rgba(30, 30, 30, 0.9);
+    }
+    .dark-mode footer {
+      background: rgba(30, 30, 30, 0.9);
+    }
+    .dark-mode .timeline-item,
+    .dark-mode .project-card,
+    .dark-mode #about .content > div,
+    .dark-mode #contact p {
+      background: rgba(30, 30, 30, 0.9); /* Dark semi-transparent for readability */
+    }
+    .dark-mode header.hero {
+      /* Mechanical background applied only here for dark mode */
+      background: 
+        /* Subtle noise texture for metallic feel */
+        linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.03) 75%, rgba(255,255,255,0.03)),
+        linear-gradient(-45deg, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.03) 75%, rgba(255,255,255,0.03)),
+        /* Pinions (small gears) */
+        conic-gradient(#aaa 0deg 15deg, transparent 15deg 30deg, #aaa 30deg 45deg, transparent 45deg 60deg, #aaa 60deg 75deg, transparent 75deg 90deg, #aaa 90deg 105deg, transparent 105deg 120deg, #aaa 120deg 135deg, transparent 135deg 150deg, #aaa 150deg 165deg, transparent 165deg 180deg, #aaa 180deg 195deg, transparent 195deg 360deg),
+        /* Crown gears (radial teeth pattern) */
+        radial-gradient(circle, #bbb 0% 10%, transparent 10% 20%, #bbb 20% 30%, transparent 30% 40%, #bbb 40% 50%, transparent 50% 60%, #bbb 60% 70%, transparent 70%),
+        /* Gears (larger with more teeth) */
+        conic-gradient(#ccc 0deg 20deg, transparent 20deg 40deg, #ccc 40deg 60deg, transparent 60deg 80deg, #ccc 80deg 100deg, transparent 100deg 120deg, #ccc 120deg 140deg, transparent 140deg 160deg, #ccc 160deg 180deg, transparent 180deg 200deg, #ccc 200deg 220deg, transparent 220deg 240deg, #ccc 240deg 260deg, transparent 260deg 280deg, #ccc 280deg 300deg, transparent 300deg 320deg, #ccc 320deg 340deg, transparent 340deg 360deg),
+        /* Dark metallic base gradient */
+        linear-gradient(135deg, #444, #222);
+      background-size: 2px 2px, 2px 2px, 40px 40px, 60px 60px, 100px 100px, auto;
+      background-position: 0 0, 1px 1px, 20px 20px, 30px 30px, 0 0, 0 0;
+      background-repeat: repeat, repeat, repeat, repeat, repeat, no-repeat;
+    }
+    .dark-mode header.hero::before {
+      background: rgba(0, 0, 0, 0.7); /* Darker overlay for dark mode */
+    }
+    .dark-mode nav ul li a {
+      color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="logo">Pranav Phani</div>
+      <div class="menu-toggle" id="mobile-menu">☰</div>
+      <ul id="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#" id="theme-toggle">Dark Mode</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home" class="hero">
+    <div class="hero-content">
+      <h1>Design Engineer</h1>
+      <p>Design engineering & Manufacturing, Quality assurance</p>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="content">
+        <div>
+          <p>I am a dedicated Design Engineer with 5+ years of experience in developing innovative solutions for complex challenges in the aerospace and technology sectors. My expertise lies in advanced CAD design, simulation, and lean manufacturing principles to create cost-effective, high-performance products.</p>
+          <p><strong>Technical Skills:</strong> SolidWorks, NX CAD, ANSYS, MATLAB, Simulink, GD&T, Six Sigma, Lean Manufacturing, CNC Programming, PLM Tools, and more.</p>
+          <p><strong>Education:</strong> M.S. in Industrial Engineering from New Jersey Institute of Technology and B.Tech in Mechanical Engineering from Alliance University.</p>
+        </div>
+        <div>
+          <img src="images/pranav.jpg" alt="Profile Picture" style="border-radius:10px;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <ul class="timeline">
+        <li class="timeline-item fade-in">
+          <h3>Honeywell International – NJ</h3>
+          <span>Sept 2023 – Current</span>
+          <p>Led the design of next-generation turbine blades, optimizing aerodynamic and thermal properties. Used NX CAD for precise 3D modeling and ANSYS for FEA simulations to boost engine efficiency and reduce emissions.</p>
+        </li>
+        <li class="timeline-item fade-in">
+          <h3>Tata Boeing Aerospace Limited – India</h3>
+          <span>Aug 2021 – May 2022</span>
+          <p>Managed quality assurance for critical structural components. Automated simulations with MATLAB and applied Six Sigma practices to enhance production efficiency and compliance with aerospace standards.</p>
+        </li>
+        <li class="timeline-item fade-in">
+          <h3>Capgemini – India</h3>
+          <span>Sept 2020 – Aug 2021</span>
+          <p>Designed complex 3D models and applied DFM principles using SolidWorks. Leveraged rapid prototyping and agile methodologies to reduce lead times and improve design efficiency.</p>
+        </li>
+        <li class="timeline-item fade-in">
+          <h3>Steel Strips Wheels Limited – India</h3>
+          <span>Sept 2017 – Jul 2018</span>
+          <p>Developed precision tooling and die components for automotive steel wheels. Utilized GD&T and FEA with ANSYS to optimize designs and reduce production costs.</p>
+        </li>
+        <li class="timeline-item fade-in">
+          <h3>HBL Power Systems Ltd. – India</h3>
+          <span>Aug 2016 – Jul 2017</span>
+          <p>Led process optimization in battery system manufacturing using Lean and DFM techniques, significantly increasing production efficiency while reducing downtime.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card fade-in" style="grid-column: 1 / -1;">
+          <div class="project-info">
+            <h3>Injection Mold Project</h3>
+            <p>Designed and developed precision injection mold components for high-performance manufacturing applications.</p>
+          </div>
+          <div class="image-gallery">
+            <img src="images/g.jpg" alt="Injection Mold Image 1">
+            <img src="images/s.jpg" alt="Injection Mold Image 2">
+            <img src="images/n.jpg" alt="Injection Mold Image 3">
+            <img src="images/f.jpg" alt="Injection Mold Image 4">
+            <img src="images/section.jpg" alt="Injection Mold Image 5">
+            <img src="images/tool.jpg" alt="Injection Mold Image 6">
+          </div>
+        </div>
+        <div class="project-card fade-in" style="grid-column: 1 / -1;">
+          <div class="project-info">
+            <h3>Press Tool</h3>
+            <p>Tooling design is an essential part of the manufacturing process. It refers to the plans and components used to build a product or part, from start to finish. This type of design covers everything from selecting raw materials and molding them into specific shapes, to machining parts for accuracy and assembly processes.</p>
+          </div>
+          <div class="image-gallery">
+            <img src="images/first.jpg" alt="Press Tool Image 1">
+            <img src="images/second.jpg" alt="Press Tool Image 2">
+            <img src="images/third.jpg" alt="Press Tool Image 3">
+          </div>
+        </div>
+        <div class="project-card fade-in" style="grid-column: 1 / -1;">
+          <div class="project-info">
+            <h3>Rapid Prototyping</h3>
+            <p>It is a method of quickly creating a physical model or prototype of a product or design using 3D computer-aided design (CAD) data, often employing techniques like 3D printing, to facilitate early testing and iteration.</p>
+          </div>
+          <div class="image-gallery">
+            <img src="images/rapid1.jpg" alt="Rapid Prototyping Image 1">
+            <img src="images/rapid2.jpg" alt="Rapid Prototyping Image 2">
+            <img src="images/rapid3.jpg" alt="Rapid Prototyping Image 3">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact Me</h2>
+      <p>Email: <a href="mailto:pranavphani1996@gmail.com">pranavphani1996@gmail.com</a> | Phone: 973-757-4323</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Pranav Phani Lingamguntla. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.getElementById('nav-menu');
+    mobileMenu.addEventListener('click', () => {
+      navMenu.parentElement.classList.toggle('active');
+    });
+
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.body.classList.toggle('dark-mode');
+      themeToggle.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+    });
+
+    // Intersection Observer for Fade-In Animation
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.2 };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  </script>
+</body>
+</html>
